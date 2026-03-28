@@ -1,0 +1,34 @@
+{% extends 'paneldecontrol/base.html' %} {% load static %}
+
+{% block content %}
+    <body class="dashboard">
+            <div id="container">
+              <nav>
+                <h1>Sistema de Gestion</h1>
+              </nav>
+                {% if request.user.is_authenticated %}
+                <hr>
+                <h4>
+                  bienvenido, {{user.username | upper}}
+                </h4>
+                {% endif %}
+              <ul>
+                {% if request.user.is_authenticated %}
+                  <button id="btnregistros" style="align-self: center;"><a href="{% url 'registros'  %}">registros</a></button>
+                  <button id="btninventario"style="align-self: center;><a href="{% url 'inventario'  %}"> Inventario</a></button>
+                  <button id="btnañadir"style="align-self: center;><a href="{% url 'añadir'  %}">añadir producto</a></button>
+                {% else %}
+                <h1>Bienvenido a el sistema de gestion de la heladeria hipotetica,
+                  para su uso ingrese <a href="{% url 'login' %}"> aqui</a>
+                </h1  > 
+                {% endif %}
+              </ul>
+            </div>
+            <footer >
+              <div id="fondo" style="display: inline;">
+                <h2 id="copy">Heladeria hipotetica© 2026</h1>
+                <a href="{% url 'contact' %}">contacto</a>
+              </div>
+            </footer>
+    </body>
+{% endblock %}

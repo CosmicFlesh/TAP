@@ -1,0 +1,39 @@
+{% load static %} {% if latest_usuario_list %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+    <script src="{% static 'js/script.js' %}"></script>
+  </head>
+  <div id="containerheader">
+    <header id="header">
+      <div>
+        <a href="{% url 'index' %}">
+          <img src="{% static 'images/helado.png' %}" id="logo" alt="helado" />
+        </a>
+        <div>
+          <h2>
+            <a href="{% url 'contact' %}">dmin</a>
+          </h2>
+        </div>
+          <div></div>
+    </header>
+  </div>
+    <body class="dashboard">
+            <div id="containerhud">
+              <nav>
+                <h1>Usuarios de Gestion</h1>
+              </nav>
+              <img src="{% static 'images/helado.png' %}" alt="helado" />
+              <ul>
+               
+              </ul>
+             
+            </div>
+            <footer>
+              <div>
+                <h1 id="copy">Heladeria hipotetica© 2026</h1>
+              </div>
+            </footer>
+    </body>  
+  </div>
+</html>

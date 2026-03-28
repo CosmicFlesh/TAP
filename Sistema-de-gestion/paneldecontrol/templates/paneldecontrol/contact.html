@@ -1,0 +1,28 @@
+{% load static %} 
+<html>
+  <head>
+     <link rel="stylesheet" href="{%  static 'styles/stylescontacto.css' %}" />
+     <script src=""></script>
+  
+    <nav>
+      <h1>Contacto</h1>
+    </nav>  
+  </head>
+  
+  <body>
+      <img src="{%  static 'images/contacto.png' %}" alt="Hecho en Paint NET" />
+      
+     {% comment %}
+      <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" > Enviar </button>
+      </form>
+      {% endcomment %}
+      
+  </body>
+  
+  <footer>
+    <a href="{%  url 'index' %}">Salir a inicio</a>
+  </footer>
+</html>
