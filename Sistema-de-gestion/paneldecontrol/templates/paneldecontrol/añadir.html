@@ -1,0 +1,53 @@
+
+{% extends 'paneldecontrol/base.html' %}
+{% block content %} 
+{% block title %}añadir producto{% endblock %} 
+{% load crispy_forms_tags %}
+<h1>Nuevo Producto</h1>
+<div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+  <div class="card">
+    <div class="card-body">
+      <form action="registrar-produ/" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" id="txtnombre" name="nombre" class="form-control" placeholder="Nombre producto" minlength="3" maxlength="40" required/>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            id="txtcantidad"
+            name="cantidad"
+            class="form-control"
+            placeholder="Cantidad producto"
+            minlength="1"
+            maxlength="128"
+            required
+          />
+        </div>
+        <div class="form-group">
+  <select name="categoria" class="form-control" required>
+    <option value="">Seleccione Categoría</option>
+    {% for eow in categorias %}
+      <option value="{{ row.id }}">{{ row.nombre }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="form-group">
+  <select name="marca" class="form-control" required>
+    <option value="">Seleccione Marca</option>
+    {% for row in marcas %}
+      <option value="{{ row.id }}">{{ row.nombre }}</option>
+    {% endfor %}
+  </select>
+</div>
+        <div class="form-group">
+          <button type="submit"  class="btn btn-success btn-block text-white">
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

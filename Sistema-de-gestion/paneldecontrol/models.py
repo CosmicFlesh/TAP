@@ -20,16 +20,20 @@ class Contraseña(models.Model):
         return self.contraseña_text
     
 class Marca(models.Model):
+    
     marca = models.CharField(max_length=120)
     def __str__(self):
         return self.marca
 
 class Categoria(models.Model):
     categoria = models.CharField(max_length=120)
+    def __str__(self):
+        return self.categoria
    
 class Inventario(models.Model):
+    codigo = models.CharField(primary_key=True,max_length=6, default=1)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    inventario_text = models.CharField(max_length=350)
+    nombreproducto = models.CharField(max_length=350)
     cantidad = models.IntegerField(default=0)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
@@ -38,5 +42,5 @@ class Inventario(models.Model):
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
     def __str__(self):
-        return self.inventario_text
+        return self.nombreproducto
 # Create your models here.

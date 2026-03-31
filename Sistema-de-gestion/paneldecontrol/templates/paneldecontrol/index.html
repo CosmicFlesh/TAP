@@ -1,34 +1,35 @@
 {% extends 'paneldecontrol/base.html' %} {% load static %}
 
+{% block title  %}Inicio{% endblock  %}
 {% block content %}
     <body class="dashboard">
-            <div id="container">
+            <div>
               <nav>
                 <h1>Sistema de Gestion</h1>
               </nav>
+              <div class="card">
                 {% if request.user.is_authenticated %}
                 <hr>
-                <h4>
+                <h2 class="text-center">
                   bienvenido, {{user.username | upper}}
-                </h4>
+                </h2>
                 {% endif %}
-              <ul>
-                {% if request.user.is_authenticated %}
-                  <button id="btnregistros" style="align-self: center;"><a href="{% url 'registros'  %}">registros</a></button>
-                  <button id="btninventario"style="align-self: center;><a href="{% url 'inventario'  %}"> Inventario</a></button>
-                  <button id="btnañadir"style="align-self: center;><a href="{% url 'añadir'  %}">añadir producto</a></button>
-                {% else %}
-                <h1>Bienvenido a el sistema de gestion de la heladeria hipotetica,
-                  para su uso ingrese <a href="{% url 'login' %}"> aqui</a>
-                </h1  > 
+                  <div class="card-body d-grid gap-2 col-6 mx-auto">  
+                  <ul>
+                   {% if request.user.is_authenticated %}
+                      <a href="{% url 'registros'  %}"><button class="btn btn-outline-secondary card-img-top btn-lg"><img src="{% static 'images/registro.png' %}" id="logo" width="80px" alt="helado" /> registros</button></a>
+                      <a href="{% url 'inventario'  %}"><button class="btn btn-outline-secondary card-img-top btn-lg"><img src="{% static 'images/helado.png' %}" id="logo" width="100px" alt="helado" />  Inventario</button></a>
+                      <a href="{% url 'registroproducto'  %}"> <button class="btn btn-outline-secondary card-img-top btn-lg"><img src="{% static 'images/añadir.png' %}" id="logo" width="60px" alt="helado" />   añadir producto</button></a>
+                    {% else %}
+                  <h1 class="text-center">Bienvenido a el sistema de gestion de la heladeria hipotetica,
+                  para su uso ingrese
+                    <a href="{% url 'login' %}" class=""> aqui</a>
+                  </h1  > 
                 {% endif %}
-              </ul>
-            </div>
-            <footer >
-              <div id="fondo" style="display: inline;">
-                <h2 id="copy">Heladeria hipotetica© 2026</h1>
-                <a href="{% url 'contact' %}">contacto</a>
+                </ul>
               </div>
-            </footer>
+              </div>
+              </div>
+            </div>
     </body>
 {% endblock %}

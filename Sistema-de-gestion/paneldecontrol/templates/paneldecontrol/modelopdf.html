@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; }
+        h1 { color: #333; text-align: center; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        @page { size: A4; margin: 1cm; } /* Configuración de página */
+    </style>
+</head>
+<body>
+    <h1>Listado de Registros</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+            <tr>
+                <td>{{ registro.codigo }}</td>
+                <td>{{ registro.nombre }}</td>
+                <td>{{ registro.nombreproducto }}</td>
+                <td>{{ registro.cantidad }}</td>
+                <td>{{ registro.categoria }}</td>
+                <td>{{ registro.marca }}</td>
+                <td>{{ registro.pub_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

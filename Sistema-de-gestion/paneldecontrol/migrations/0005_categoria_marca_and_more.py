@@ -31,16 +31,5 @@ class Migration(migrations.Migration):
             old_name='tienecosas',
             new_name='cantidad',
         ),
-        migrations.AddField(
-            model_name='inventario',
-            name='categoria',
-            field=models.ForeignKey(default=django.utils.timezone.now, on_delete=django.db.models.deletion.CASCADE, to='paneldecontrol.categoria'),
-            preserve_default=False,
-        ),
-        migrations.AddField(
-            model_name='inventario',
-            name='marca',
-            field=models.ForeignKey(default=django.utils.timezone.now, on_delete=django.db.models.deletion.CASCADE, to='paneldecontrol.marca'),
-            preserve_default=False,
-        ),
+       
     ]

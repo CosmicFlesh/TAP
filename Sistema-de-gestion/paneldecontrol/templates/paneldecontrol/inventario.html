@@ -1,8 +1,42 @@
-<h1></h1>
-<ul>
+{% extends 'paneldecontrol/base.html' %}
 
-</ul>
-<form action="{% url "inventario" %}" method="post">
-{% csrf_token %}
-<input type="submit" value="inventario_text">
-</form>
+{% block title  %}Inventario{% endblock  %}
+
+{% block content %}
+<h1>LISTADO DE PRODUCTOS</h1>
+<div class="card row border-primary text-bg-secondary mb-3">
+    <div class="">
+        <div class="table-responsive">
+            <table class="table table-hover   table-striped-columns">
+                <thead>
+                    <tr>
+                        <th >codigo</th>
+                        <th >añadido por</th>
+                        <th >nombre</th>
+                        <th >cantidad</th>
+                        <th >categoria</th>
+                        <th >marca</th>
+                        <th >fecha de entrada</th>
+                        <th colspan="2">opciones</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for row in rows %}
+                    <tr>
+                        <td >{{row.codigo}}</td>
+                        <td>{{row.usuario}}</td>
+                        <td>{{row.nombreproducto}}</td>
+                        <td>{{row.cantidad}}</td>
+                        <td>{{row.categoria}}</td>
+                        <td>{{row.marca}}</td>
+                        <td>{{row.pub_date}}</td>
+                        <td><a href="/editarprodu/{{row.codigo}}" class="btn btn-info" >Editar</a></td>
+                        <td><a href="/borrarproducto/{{row.codigo}}" class="btn btn-danger">Borrar</a></td>
+                    </tr>
+                    {% endfor %}    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
