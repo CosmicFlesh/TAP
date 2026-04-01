@@ -14,7 +14,7 @@ urlpatterns = [
     path("registrar-produ/", views.añadir, name="añadir"),
     path("contact/", views.contact_view, name="contact"),
     path("logout/", exit, name='exit'),
-    path("editarprodu/<codigo>", views.editarprodu, name="editar"),
-    path("edicionprodu/", views.edicionprodu, name="edicion"),
+    path("editarprodu/<codigo>", views.editarprodu),
+    path("edicionprodu/<codigo>", views.edicionprodu, name="edicion"),
     path("borrarproducto/<codigo>", views.borrarprodu, name="borrar"),
 ]

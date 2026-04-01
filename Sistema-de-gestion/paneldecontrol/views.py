@@ -73,28 +73,29 @@ def exportar_pdf(request):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename="reporte_registros.pdf"'
     # 4. Generar el PDF
-    HTML(string=html_string, base_url=request.build_absolute_uri()).write_pdf(response)
+    # HTML(string=html_string, base_url=request.build_absolute_uri()).write_pdf(response)
     
     return response
+
 def editarprodu(request):
-    codig = request.POST['txtcodigo']
+    codigo = request.POST['txtcodigo']
     nombre = request.POST['txtnombre']
     cantidad = request.POST['txtcantidad']
     categoria_id = request.POST['txtcategoria'] 
     marca_id = request.POST['txtmarca'] 
-    producto = Inventario.objects.get(codigo=codig)
+
+    producto = Inventario.objects.get(codigo=codigo)
     producto.nombreprodu = nombre
     producto.cantidad = cantidad
     producto.categoria = categoria_id
     producto.marca = marca_id
     producto.save()
+    
     return redirect('inventario')
-
-
 
 def edicionprodu(request, codigo):
     producto = Inventario.objects.get(codigo=codigo)
-    return render(request, "/editarprodu.html", {"producto": Inventario})
+    return render(request, "paneldecontrol/edicionprodu.html", {"Inventario": producto})
 
 def borrarprodu(request, codigo):
     producto = Inventario.objects.get(codigo=codigo)
