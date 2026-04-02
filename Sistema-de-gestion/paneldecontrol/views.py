@@ -85,7 +85,7 @@ def editarprodu(request):
     marca_id = request.POST['txtmarca'] 
 
     producto = Inventario.objects.get(codigo=codigo)
-    producto.nombreprodu = nombre
+    producto.nombreproducto = nombre
     producto.cantidad = cantidad
     producto.categoria = categoria_id
     producto.marca = marca_id
